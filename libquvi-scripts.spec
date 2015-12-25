@@ -3,7 +3,7 @@ Summary(pl.UTF-8):	Skrypty osadzonego lua wykorzystywane przez libquvi do analiz
 Name:		libquvi-scripts
 Version:	0.9.20131130
 Release:	1
-License:	LGPL v2.1+
+License:	AGPL v3+
 Group:		Applications
 Source0:	http://downloads.sourceforge.net/quvi/%{name}-%{version}.tar.xz
 # Source0-md5:	46ddfd887260a515199c2e1ba8c46d8a
