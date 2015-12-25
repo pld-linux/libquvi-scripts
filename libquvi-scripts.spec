@@ -1,18 +1,21 @@
 Summary:	Embedded lua scripts that libquvi uses for parsing the media details
 Summary(pl.UTF-8):	Skrypty osadzonego lua wykorzystywane przez libquvi do analizy multimediów
 Name:		libquvi-scripts
-Version:	0.4.9
+Version:	0.9.20131130
 Release:	1
 License:	LGPL v2.1+
 Group:		Applications
 Source0:	http://downloads.sourceforge.net/quvi/%{name}-%{version}.tar.xz
-# Source0-md5:	a7f3dad2e2809857e876726813bba1be
+# Source0-md5:	46ddfd887260a515199c2e1ba8c46d8a
 URL:		http://quvi.sourceforge.net/
-BuildRequires:	autoconf >= 2.67
-BuildRequires:	automake >= 1:1.11
+BuildRequires:	asciidoc
+BuildRequires:	autoconf >= 2.69
+BuildRequires:	automake >= 1:1.11.1
+BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	rpmbuild(macros) >= 1.446
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
+# build process and tests aren't noarch, but built package is
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -28,10 +31,16 @@ libquvi przy analizie szczegółów danych multimedialnych.
 %setup -q
 
 %build
+%{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
+%if "%{_gnu}" != "-gnux32"
+	--build=%{_host} \
+	--host=%{_host} \
+%endif
 	--disable-silent-rules \
 	--with-nsfw \
 	--with-nlfy
@@ -52,4 +61,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README
 %{_datadir}/%{name}
 %{_mandir}/man7/libquvi-scripts.7*
-%{_npkgconfigdir}/libquvi-scripts.pc
+%{_mandir}/man7/quvi-modules.7*
+%{_mandir}/man7/quvi-modules-3rdparty.7*
+%{_npkgconfigdir}/libquvi-scripts-0.9.pc
