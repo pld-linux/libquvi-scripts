@@ -2,7 +2,7 @@ Summary:	Embedded lua scripts that libquvi uses for parsing the media details
 Summary(pl.UTF-8):	Skrypty osadzonego lua wykorzystywane przez libquvi do analizy multimediów
 Name:		libquvi-scripts
 Version:	0.9.20131130
-Release:	2
+Release:	3
 License:	AGPL v3+
 Group:		Applications
 Source0:	http://downloads.sourceforge.net/quvi/%{name}-%{version}.tar.xz
